@@ -17,7 +17,6 @@ class Database :
         for statement in statements :
             self.cursor.execute(statement)
         
-        self.cursor.close()
         self.connection.commit()
     
     def test_tables(self):
@@ -35,6 +34,7 @@ class Database :
 
         pass 
 
-db  = Database()
+
+db = Database()
 
 db.test_tables()
