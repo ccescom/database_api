@@ -59,3 +59,47 @@ def select_farmers_id() :
         "success" : True,
         "result" : result
     })
+
+@select.route('/api/select/requests_of_line', methods = ['POST'])
+def select_requests() :
+
+    line_id = request.get_json()['line_id']
+
+    query = "select * from REQUEST r, FARMER f where f.farmer_id = r.line_id and f.line_id=:line_id"
+
+    result = utils.select(init.db, query, parms = {'line_id' : line_id})
+
+    return jsonify({
+        'success' : True,
+        'result' : result
+    })
+
+@select.route('/api/select/login', methods = ['POST'])
+def select_requests() :
+
+    username = request.get_json()['username']
+    password = request.get_json()['password']
+
+    query = "select * from ADMINS where admin_id=:username and password=:password"
+
+    result = utils.select(init.db, query, parms = {
+        "username" : username,
+        "password" : password
+    })
+
+    if len(result) == 0 : 
+
+        return jsonify({
+            'success' : False,
+            'message' : "Invalid username or password"
+        })
+    
+    else : 
+
+        return jsonify({
+            'success' : True,
+            'message' : 'Auth success'
+        })
+
+
+
