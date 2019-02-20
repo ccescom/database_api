@@ -46,3 +46,16 @@ def select_farmers() :
         "result" : result
     })
 
+@select.route('/api/select/farmers_loc_id', methods = ['POST'])
+def select_farmers_id() :
+
+    location_id = request.get_json()['location_id']
+
+    query = "select * from FARMER f, SUPPLY_LINES s where f.line_id = s.line_id and s.location_id=:location_id"
+
+    result = utils.select(init.db, query, parms = {"location_id" : location_id})
+
+    return jsonify({
+        "success" : True,
+        "result" : result
+    })
