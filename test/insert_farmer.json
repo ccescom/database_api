@@ -1,10 +1,10 @@
 {
     "TABLE" : "FARMER",
     "data" : {
-        "name" : "Prasanna",
-        "address" : "#105, 1st cross, Badami, Bagalkote",
-        "acres" : 4,
-        "no_of_pumps" : 6,
+        "name" : "Pavan",
+        "address" : "#167, 1st cross, Badami, Bagalkote",
+        "acres" : 5,
+        "no_of_pumps" : 3,
         "line_id" : "3f7bead2-34d6-13f7",
         "language" : "hi"
     }, 

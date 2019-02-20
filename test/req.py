@@ -48,4 +48,4 @@ def select_farmer_from_line() :
 
 
 #test_insert_supply_line()
-select_farmer_from_line()
+test_insert_farmer()

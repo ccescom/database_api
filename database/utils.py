@@ -86,7 +86,17 @@ def insert(db, sql) :
 def select(db,sql, parms) :
     
     result = db.cursor.execute(sql, parms)
-    return result.fetchall()
+    res = []
+    for row in result : 
+        d = {}
+        for idx, col in enumerate(db.cursor.description):
+           d[col[0]] = row[idx]  
+        res.append(d)
+    
+    return res
+    
+
+
 
     
 

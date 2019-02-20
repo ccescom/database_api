@@ -14,6 +14,5 @@ def api_insert() :
 
     return jsonify({
         "success" : True,
-        "insert_id" : str(insert_id),
         "primary_key" : pk
     }) 
