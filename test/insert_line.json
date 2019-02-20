@@ -1,0 +1,8 @@
+{
+    "TABLE" : "SUPPLY_LINES",
+    "data" : {
+        "location_id" : "cdc1bc86-34d1-1cdc",
+        "metadata" : "This line comes under Bagalkote distcrit"
+    },
+    "PRIMARY_KEY" : "line_id"
+}
