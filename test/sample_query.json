@@ -1,0 +1,10 @@
+{
+    "TABLE" : "LOCATION",
+    "data" : { 
+        "location_name" : "Badami",
+        "district" : "Bagalkote",
+        "pincode" : "587664",
+        "state" : "Karnataka"
+    },
+    "PRIMARY_KEY" : "location_id"
+}

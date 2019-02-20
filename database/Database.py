@@ -35,6 +35,3 @@ class Database :
         pass 
 
 
-db = Database()
-
-db.test_tables()

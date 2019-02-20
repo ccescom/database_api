@@ -1,0 +1,8 @@
+{
+    "TABLE" : "LOCATION",
+    "FILTERS" : {
+        "location_name" : "Badami",
+        "location_id" : "cdc1bc86-34d1-1cdc"
+    },
+    "COLS" : ["*"]
+}

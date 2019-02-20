@@ -3,7 +3,8 @@
         "CREATE TABLE LOCATION (location_id varchar(20) primary key, location_name varchar(30), district varchar(30), pincode varchar(10), state varchar(30), metadata text)",
         "CREATE TABLE SUPPLY_LINES (line_id varchar(20) primary key, location_id varchar(20), metadata text, foreign key (location_id) references LOCATION(location_id))",
         "CREATE TABLE ADMINS (admin_id varchar(20) primary key, password varchar(30), location_id varchar(20), metadata text, foreign key (location_id) references LOCATION(location_id))",
-        "CREATE TABLE FARMER (farmer_id varchar(20) primary key, name varchar(30), address text, mobile varchar(13), acres integer, no_of_pumps integer, crop text, metadata text, line_id varchar(20), language varchar(3),  foreign key (line_id) references SUPPLY_LINES(line_id))",
-        "CREATE TABLE REQUEST (farmer_id varchar(20), hours integer, week integer, metadata text)" 
+        "CREATE TABLE FARMER (farmer_id varchar(20) primary key, name varchar(30), address text, mobile varchar(13), acres integer, no_of_pumps integer, metadata text, line_id varchar(20), language varchar(3),  foreign key (line_id) references SUPPLY_LINES(line_id))",
+        "CREATE TABLE REQUEST (farmer_id varchar(20), hours integer, week integer, metadata text, foreign key (farmer_id) references FARMER(farmer_id))" ,
+        "CREATE TABLE CROP (farmer_id varchar(20), crop text, metadata text, foreign key (farmer_id) references FARMER(farmer_id))"
     ]
 }
