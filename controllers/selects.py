@@ -1,6 +1,33 @@
 from database import Database, utils, init
 from flask import Blueprint, jsonify, request
 
+access_rules = {
+    'LOCATION' : {
+        'allow_access' : True,
+        'direct_query_access' : True
+    } ,
+    'SUPPLY_LINES' : {
+        'allow_access' : True,
+        'direct_query_access' : True
+    },
+    'ADMINS' : {
+        'allow_access' : True,
+        'direct_query_access' : False
+    },
+    'FARMER' : {
+        'allow_access' : True,
+        'direct_query_access' : True
+    },
+    'REQUEST' : {
+        'allow_access' : True,
+        'direct_query_access' : False
+    },
+    'CROP' : {
+        'allow_access' : True,
+        'direct_query_access' : True 
+    }
+}
+
 
 select = Blueprint("select", __name__)
 
@@ -101,5 +128,39 @@ def select_requests() :
             'message' : 'Auth success'
         })
 
+@select.route('/api/select/crop', methods = ['POST'])
+def select_crop() :
 
+    farmer_id = request.get_json()['crop']
+
+    query = "select * from CROP where farmer_id=:farmer_id"
+
+    result = utils.select(db, query, parms = {"farmer_id" : farmer_id})
+
+    return jsonify({
+        'success' : True,
+        'result' result
+    })
+
+@select.route('/api/select/query_sql', methods = ['POST'])
+def select_query_sql() :
+
+    query = request.get_json()['query']
+
+    parms = request.get_json()['parms']
+
+    tables = request.get_json()['tables']
+
+    for  table in tables : 
+
+        if not access_rules[table]['direct_query_access'] :
+
+           return jsonify({'success' : False, 'result' : "Access denied for table "+table})
+
+    result = utils.select(db, query, parms)
+
+    return jsonify({
+        'succes' : True,
+        'reuslt' : result
+    })
 
